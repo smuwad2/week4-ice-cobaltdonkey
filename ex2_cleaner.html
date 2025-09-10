@@ -13,10 +13,6 @@
         .circle {
             border-radius: 50%;
         }
-
-        .square {
-            border-radius: 0;
-        }
     </style>
 
 
@@ -31,20 +27,11 @@
     <button onclick="changeShape()">Make a change!</button>
 
     <script>
-        var square = true;
+        // var square = true; (redundant)
         // add code here
         function changeShape() {
             const div = document.getElementById("div1");
-
-            if (square) {
-                div.classList.remove("square");
-                div.classList.add("circle");
-            } else {
-                div.classList.remove("circle");
-                div.classList.add("square");
-            }
-            
-            square = !square; // flips state
+            div.classList.toggle("circle");
         }
 
     </script>
