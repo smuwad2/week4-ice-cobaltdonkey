@@ -11,8 +11,9 @@
 
    <input type="text" id="inputText">
    <!-- add a button here for adding new item -->
+   <button onclick="addItem()">Enter</button>
 
-   <ul>
+   <ul id="shoppingList">
       <li>Notebook<!--<button>Delete</button></li>-->
       <li>Jello</li>
       <li>Spinach</li>
@@ -24,7 +25,29 @@
    <script>
 
       // add code here
+      function addDeleteBtn(listItem) {
+         let deleteBtn = document.createElement("button");
+         deleteBtn.innerText = "Delete";
+         deleteBtn.style.marginLeft = "10px";
+         deleteBtn.onclick = function () {
+            listItem.remove()
+         }
+         listItem.appendChild(deleteBtn)
+      }
 
+      document.querySelectorAll("#shoppingList li").forEach(addDeleteBtn);
+
+      function addItem() {
+         let itemName = document.getElementById("inputText").value;
+         // create li element
+         let listItem = document.createElement("li");
+         listItem.innerText = itemName;
+         // adds delete button onto new list item
+         addDeleteBtn(listItem);
+         // build onto DOM
+         let itemsList = document.getElementsByTagName("ul")[0];
+         itemsList.appendChild(listItem);
+      }
    </script>
 
 </body>
